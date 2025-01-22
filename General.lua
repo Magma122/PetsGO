@@ -43,5 +43,5 @@ return function(Tabs, Options)
     end)
 
     Options.AutoRoll:SetValue(false)    
-    Options.OrbToggle:SetValue(false)    
+    Options.CollectOrbs:SetValue(false)    
 end
