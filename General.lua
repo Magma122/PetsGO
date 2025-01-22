@@ -23,6 +23,18 @@ return function(Tabs, Options)
             local AllOrbs = {}
             for _, orb in pairs(Orbs:GetChildren()) do
                 table.insert(AllOrbs, orb)
+                local player = game.Players.LocalPlayer
+
+                while true do
+                    local playerPosition = player.Character.HumanoidRootPart.Position
+                    local objectPosition = orb.Position
+
+                    local direction = (playerPosition - objectPosition).unit
+                    orb.Position = objectPosition + direction * 5 * wait()
+
+                    wait(0.1) -- Настройте время ожидания для более плавного движения
+                end
+
             end
             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Orbs: Collect"):FireServer(AllOrbs)
                 
