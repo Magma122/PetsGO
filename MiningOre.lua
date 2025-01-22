@@ -55,6 +55,4 @@ return function(Tabs, Options)
             end
         end
     end)
-
-    Options.MiningMerchant:SetValue(false)    
 end
