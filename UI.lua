@@ -14,8 +14,9 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Preview = Window:AddTab({ Title = "Preview", Icon = "eye" }),
+    General = Window:AddTab({ Title = "General", Icon = "eye" }),
     MiningOre = Window:AddTab({ Title = "Mining of ore", Icon = "" }),
-    Fishing = Window:AddTab({ Title = "Fishing", Icon = "rbxassetid://16028878219" }),
+    Fishing = Window:AddTab({ Title = "Fishing", Icon = "rbxassetid://122331085867847" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
