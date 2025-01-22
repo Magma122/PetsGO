@@ -7,15 +7,15 @@ local Window = Fluent:CreateWindow({
     SubTitle = "fun farm",
     TabWidth = 200,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Acrylic = true,
     Theme = "Darker",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 local Tabs = {
     Preview = Window:AddTab({ Title = "Preview", Icon = "eye" }),
-    General = Window:AddTab({ Title = "General", Icon = "eye" }),
-    MiningOre = Window:AddTab({ Title = "Mining of ore", Icon = "" }),
+    General = Window:AddTab({ Title = "General", Icon = "swords" }),
+    MiningOre = Window:AddTab({ Title = "Mining of ore", Icon = "rbxassetid://127838018891006" }),
     Fishing = Window:AddTab({ Title = "Fishing", Icon = "rbxassetid://122331085867847" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
