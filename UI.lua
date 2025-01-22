@@ -16,7 +16,7 @@ local Tabs = {
     Preview = Window:AddTab({ Title = "Preview", Icon = "eye" }),
     General = Window:AddTab({ Title = "General", Icon = "swords" }),
     MiningOre = Window:AddTab({ Title = "Mining of ore", Icon = "rbxassetid://127838018891006" }),
-    Fishing = Window:AddTab({ Title = "Fishing", Icon = "rbxassetid://122331085867847" }),
+    Fishing = Window:AddTab({ Title = "Fishing", Icon = "rbxassetid://16028878947" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -38,6 +38,10 @@ do
     })
 end
 
+
+-- General
+local General = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/General.lua"))()
+General(Tabs, Options)
 -- MiningOre
 local MiningOre = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/MiningOre.lua"))()
 MiningOre(Tabs, Options)
