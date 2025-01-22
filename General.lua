@@ -21,9 +21,10 @@ return function(Tabs, Options)
         while Options.CollectOrbs.Value do
             local Orbs = game:GetService("Workspace"):WaitForChild("__THINGS"):WaitForChild("Orbs")
             local AllOrbs = {}
-            for _, orb in pairs(Orbs:GetChildren()) do
-                table.insert(AllOrbs, orb.Name)
+            for index, orb in pairs(Orbs:GetChildren()) do
+                AllOrbs[index] = orb
             end
+            print(unpack(AllOrbs))
             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Orbs: Collect"):FireServer(AllOrbs)
                 
             wait(0.01)
