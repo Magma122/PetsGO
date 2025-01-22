@@ -38,7 +38,7 @@ do
 end
 
 -- MiningOre
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/adsd.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/MiningOfOre.lua"))()
 
 
 
