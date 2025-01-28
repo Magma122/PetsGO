@@ -20,13 +20,13 @@ return function(Tabs, Options)
     OrbToggle:OnChanged(function()
         while Options.CollectOrbs.Value do
             local Orbs = game:GetService("Workspace"):WaitForChild("__THINGS"):WaitForChild("Orbs")
-            local AllOrbs = {}
             for index, orb in pairs(Orbs:GetChildren()) do
-                AllOrbs[index] = orb
+                local AllOrbs = {}
+                AllOrbs[1] = orb
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Orbs: Collect"):FireServer(AllOrbs)
+                orb:Destroy()
             end
-            print(unpack(AllOrbs))
-            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Orbs: Collect"):FireServer(AllOrbs)
-                
+  
             wait(0.01)
         end
     end)    
