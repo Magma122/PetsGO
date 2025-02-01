@@ -1,5 +1,5 @@
 return function(Tabs, Options)
-    local FishingPools = Tabs.Main:AddDropdown("FishingPools", {
+    local FishingPools = Tabs.Fishing:AddDropdown("FishingPools", {
         Title = "Fishing Pools",
         Values = {"Default", "Ice", "Corrupted"},
         Multi = false,
@@ -12,7 +12,7 @@ return function(Tabs, Options)
         getgenv().FishingPool = Value
     end)
 
-    local FishToggle = Tabs.General:AddToggle("AutoFish", {
+    local FishToggle = Tabs.Fishing:AddToggle("AutoFish", {
         Title = "Auto Fish",
         Default = false
     })
