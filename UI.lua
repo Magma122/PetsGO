@@ -65,6 +65,9 @@ General(Tabs, Options)
 -- MiningOre
 local MiningOre = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/MiningOre.lua"))()
 MiningOre(Tabs, Options)
+-- Fishing
+local Fishing = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/Fishing.lua"))()
+Fishing(Tabs, Options)
 
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
