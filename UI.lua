@@ -1,3 +1,23 @@
+repeat task.wait(0.1) until game:IsLoaded() and game.Players.LocalPlayer and game:GetService("HttpService")
+
+local currentTime = os.date("%H:%M:%S|%d.%m")
+print("Work|" .. currentTime)
+
+queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+
+if syn and syn.queue_on_teleport then
+    syn.queue_on_teleport([[
+        repeat task.wait(0.1) until game:IsLoaded() and game.Players.LocalPlayer and game:GetService("HttpService")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/TradingPlaza/refs/heads/main/adsd.lua"))()
+    ]])
+elseif queue_on_teleport then
+    queue_on_teleport([[
+        repeat task.wait(0.1) until game:IsLoaded() and game.Players.LocalPlayer and game:GetService("HttpService")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/TradingPlaza/refs/heads/main/adsd.lua"))()
+    ]])
+end
+
+--Main
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -53,8 +73,8 @@ SaveManager:IgnoreThemeSettings()
 
 SaveManager:SetIgnoreIndexes({})
 
-InterfaceManager:SetFolder("FluentScriptHub")
-SaveManager:SetFolder("FluentScriptHub/specific-game")
+InterfaceManager:SetFolder("PetsGO_FUN")
+SaveManager:SetFolder("PetsGO_FUN/Config")
 
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 SaveManager:BuildConfigSection(Tabs.Settings)
@@ -63,7 +83,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Fluent",
+    Title = "PetsGO_FUN",
     Content = "The script has been loaded.",
     Duration = 8
 })
