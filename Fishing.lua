@@ -33,11 +33,6 @@ return function(Tabs, Options)
                 end
             end
             task.wait(0.015)
-            if not Options.AutoFish.Value then
-                for _, FishingPad in ipairs(game:GetService("CollectionService"):GetTagged("FishingPad")) do
-                    FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
-                end
-            end
         until not Options.AutoFish.Value
 
         if not Options.AutoFish.Value then
