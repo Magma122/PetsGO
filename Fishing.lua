@@ -17,24 +17,25 @@ return function(Tabs, Options)
         Default = false
     })
 
-
-    local FishingPoolsVector = { Default = Vector3.new(-210.01353454589844, 2.5361175537109375, 217.13662719726562),
-    Ice = Vector3.new(-287.4568786621094, -1.125335454940796, 215.4885711669922),
-    Corrupted = Vector3.new(-285.1300964355469, -0.7568280696868896, 92.8943099975586) }
+    local CollectionService = game:GetService("CollectionService")
+    local FishingPadPosition = {} 
+    for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
+            FishingPadPosition[FishingPad.Name] = FishingPad.PadGlow.Position
+    end
 
     FishToggle:OnChanged(function()
         local Player_upvr = require(game.ReplicatedStorage.Library.Player)
         if Options.AutoFish.Value then
-            Player_upvr.Optional.Position = function(...)
-                return FishingPoolsVector[getgenv().FishingPool]
+            for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
+                if FishingPad.Name == getgenv().FishingPool then
+                    FishingPad.PadGlow.Position = Player_upvr.Optional.Position()
+                else
+                    FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
+                end
             end
         else
-            Player_upvr.Optional.Position = function(...)
-                local any_Character_result1_2 = Player_upvr.Optional.Character(...)
-                if not any_Character_result1_2 then
-                    return nil
-                end
-                return any_Character_result1_2:GetPivot().Position
+            for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
+                FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
             end
         end
     end)
