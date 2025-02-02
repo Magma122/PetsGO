@@ -25,10 +25,12 @@ return function(Tabs, Options)
 
     FishToggle:OnChanged(function()
         local Player_upvr = require(game.ReplicatedStorage.Library.Player)
+        local choosePool
         if Options.AutoFish.Value then
             for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
                 if FishingPad.Name == getgenv().FishingPool then
                     FishingPad.PadGlow.Position = Player_upvr.Optional.Position()
+                    choosePool = FishingPad
                 else
                     FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
                 end
@@ -37,6 +39,9 @@ return function(Tabs, Options)
             for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
                 FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
             end
+        end
+        while Options.AutoFish.Value and task.wait(0.015) do
+            choosePool.PadGlow.Position = Player_upvr.Optional.Position()
         end
     end)
 end
