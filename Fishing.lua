@@ -17,31 +17,33 @@ return function(Tabs, Options)
         Default = false
     })
 
-    local CollectionService = game:GetService("CollectionService")
     local FishingPadPosition = {} 
-    for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
-            FishingPadPosition[FishingPad.Name] = FishingPad.PadGlow.Position
+    for _, FishingPad in ipairs(game:GetService("CollectionService"):GetTagged("FishingPad")) do
+        FishingPadPosition[FishingPad.Name] = FishingPad.PadGlow.Position
     end
 
     FishToggle:OnChanged(function()
         local Player_upvr = require(game.ReplicatedStorage.Library.Player)
-        local choosePool
-        if Options.AutoFish.Value then
-            for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
+        repeat
+            for _, FishingPad in ipairs(game:GetService("CollectionService"):GetTagged("FishingPad")) do
                 if FishingPad.Name == getgenv().FishingPool then
                     FishingPad.PadGlow.Position = Player_upvr.Optional.Position()
-                    choosePool = FishingPad
                 else
                     FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
                 end
             end
-        else
-            for _, FishingPad in ipairs(CollectionService:GetTagged("FishingPad")) do
+            task.wait(0.015)
+            if not Options.AutoFish.Value then
+                for _, FishingPad in ipairs(game:GetService("CollectionService"):GetTagged("FishingPad")) do
+                    FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
+                end
+            end
+        until not Options.AutoFish.Value
+
+        if not Options.AutoFish.Value then
+            for _, FishingPad in ipairs(game:GetService("CollectionService"):GetTagged("FishingPad")) do
                 FishingPad.PadGlow.Position = FishingPadPosition[FishingPad.Name]
             end
-        end
-        while Options.AutoFish.Value and task.wait(0.015) do
-            choosePool.PadGlow.Position = Player_upvr.Optional.Position()
         end
     end)
 end
