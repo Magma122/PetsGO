@@ -1,9 +1,6 @@
 game:IsLoaded()
 -- repeat task.wait(1.5) until game.Players.LocalPlayer and game:GetService("HttpService")
 
-local currentTime = os.date("%H:%M:%S|%d.%m")
-print("Work|" .. currentTime)
-
 task.wait(4) -- Load ALL
 
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
@@ -22,6 +19,12 @@ end
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local General = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/General.lua"))()
+local MiningOre = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/MiningOre.lua"))()
+local Fishing = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/Fishing.lua"))()
+
+
 
 local Window = Fluent:CreateWindow({
     Title = "Pets Go",
@@ -60,14 +63,9 @@ do
 end
 
 
--- General
-local General = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/General.lua"))()
+-- Tab MAIN
 General(Tabs, Options)
--- MiningOre
-local MiningOre = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/MiningOre.lua"))()
 MiningOre(Tabs, Options)
--- Fishing
-local Fishing = loadstring(game:HttpGet("https://raw.githubusercontent.com/Magma122/PetsGO/refs/heads/main/Fishing.lua"))()
 Fishing(Tabs, Options)
 
 SaveManager:SetLibrary(Fluent)
@@ -93,3 +91,6 @@ Fluent:Notify({
 })
 
 SaveManager:LoadAutoloadConfig()
+
+local currentTime = os.date("%H:%M:%S|%d.%m")
+print("Work|" .. currentTime)
